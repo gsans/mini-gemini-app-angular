@@ -9,7 +9,7 @@ import { TextServiceClient } from '../generative-ai-palm/v1beta2/text.service';
   styleUrls: ['./predict.component.scss']
 })
 export class PredictComponent implements OnInit {
-  title = 'mini-bard-palm2-angular';
+  title = 'mini-gemini-app-angular';
 
   constructor(
     @Inject(TEXT_SERVICE_CLIENT_TOKEN) public client: TextServiceClient

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mini-bard-palm2-angular": {
+    "mini-gemini-app-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "quill", "regenerator-runtime"
             ],
-            "outputPath": "dist/mini-bard-palm2-angular",
+            "outputPath": "dist/mini-gemini-app-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -89,10 +89,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mini-bard-palm2-angular:build:production"
+              "buildTarget": "mini-gemini-app-angular:build:production"
             },
             "development": {
-              "buildTarget": "mini-bard-palm2-angular:build:development"
+              "buildTarget": "mini-gemini-app-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "mini-bard-palm2-angular:build"
+            "buildTarget": "mini-gemini-app-angular:build"
           }
         },
         "test": {
