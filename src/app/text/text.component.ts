@@ -10,7 +10,7 @@ import { AudioService } from '../read/audio.service';
 import { HttpEvent, HttpEventType, HttpDownloadProgressEvent } from '@angular/common/http';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { environment } from '../../environments/environment.development';
-
+import { GoogleAI } from '../models.constants';
 
 const MAX_PHRASES = 10;
 
@@ -74,7 +74,10 @@ export class TextComponent {
     const generationConfig = {
       maxOutputTokens: 100,
     };
-    const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig });
+    const model = genAI.getGenerativeModel({ 
+      model: GoogleAI.Model.Gemini20ProExp, 
+      generationConfig 
+    });
   
     const result = await model.generateContent([ 
       "Reply using a maximum of a 100 characters.",

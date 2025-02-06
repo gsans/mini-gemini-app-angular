@@ -9,6 +9,7 @@ import {
 } from '@google/generative-ai';
 import { KatexOptions, MermaidAPI } from 'ngx-markdown';
 import { ClipboardButtonComponent } from '../clipboard-button/clipboard-button.component';
+import { GoogleAI } from '../models.constants';
 
 @Component({
   selector: 'app-visual',
@@ -72,7 +73,7 @@ export class VisualComponent {
         maxOutputTokens: 100,
       };
       const model = genAI.getGenerativeModel({
-        model: 'gemini-pro-vision',
+        model: GoogleAI.Model.Gemini20ProExp,
         ...generationConfig,
       });
 

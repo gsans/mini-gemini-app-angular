@@ -9,6 +9,7 @@ import { ClipboardButtonComponent } from '../clipboard-button/clipboard-button.c
 import * as uuid from 'uuid';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { environment } from '../../environments/environment.development';
+import { GoogleAI } from '../models.constants';
 
 declare global {
   interface Window {
@@ -112,7 +113,7 @@ alert(s);
 
     ` ,
       sender: '@gerardsans',
-      avatar: "https://pbs.twimg.com/profile_images/1688607716653105152/iL4c9mUH_400x400.jpg",
+      avatar: "https://i.imgur.com/pU0z5Xt.jpeg",
     }); */
 
     this.messages.push({
@@ -247,61 +248,81 @@ alert(s);
 
         ` ,
       sender: '@gerardsans',
-      avatar: "https://pbs.twimg.com/profile_images/1688607716653105152/iL4c9mUH_400x400.jpg",
+      avatar: "https://i.imgur.com/pU0z5Xt.jpeg",
     });
 
     // Gemini Client
     const genAI = new GoogleGenerativeAI(environment.API_KEY);
-    this.gemini = genAI.getGenerativeModel({ model: "gemini-pro"});
+    this.gemini = genAI.getGenerativeModel({ model: GoogleAI.Model.Gemini20ProExp });
 
     this.chat = this.gemini.startChat({
       history: [
         {
           role: "user",
-          parts: "Keep your answers brief and to a single paragraph. Use markdown formatting extensively, Katex for formulas and MermaidJS for diagrams. Do not use other formats. Always specify the language in code fences. Eg: ```HTML. Try to use at least one or more of these special formatting options when providing your answers. Pay special attention to indentation when using MermaidJS and be very conservative using features to avoid syntax errors. Reply understood if you got everything.",
-        },
-        {
-          role: "model",
-          parts: "Understood.",
-        },
-        {
-          role: "user",
-          parts: "Difference between Constructor and ngOnInit? Answer: The constructor is called when an **Angular component** is created, while `ngOnInit` is called after the component's data has been initialized. This means that the constructor can be used to initialize the component's properties, while `ngOnInit` can be used to perform any additional initialization that needs to be done after the component's data has been loaded.\n\nFor example, the constructor might be used to set the initial value of a component's property, while `ngOnInit` might be used to subscribe to an observable or call a service.\n\nHere is an example of a constructor:\n\n```ts\nconstructor(private service: MyService) {}\n```\nAnd here is an example of `ngOnInit`:\n\n```ts\nngOnInit() {\n  this.service.getData().subscribe(data => {\n    this.data = data;\n  });\n}\n```\nIn this example, the constructor is used to inject the `MyService` dependency, while `ngOnInit` is used to subscribe to the `getData` observable and update the component's data property with the data that is returned.",
-        },
-        {
-          role: "model",
-          parts: "The constructor is called when an **Angular component** is created, while `ngOnInit` is called after the component's data has been initialized. This means that the constructor can be used to initialize the component's properties, while `ngOnInit` can be used to perform any additional initialization that needs to be done after the component's data has been loaded.\n\nFor example, the constructor might be used to set the initial value of a component's property, while `ngOnInit` might be used to subscribe to an observable or call a service.\n\nHere is an example of a constructor:\n\n```ts\nconstructor(private service: MyService) {}\n```\nAnd here is an example of `ngOnInit`:\n\n```ts\nngOnInit() {\n  this.service.getData().subscribe(data => {\n    this.data = data;\n  });\n}\n```\nIn this example, the constructor is used to inject the `MyService` dependency, while `ngOnInit` is used to subscribe to the `getData` observable and update the component's data property with the data that is returned.",
+          parts: [
+            { text: "Hi there!" },
+          ],
         },
         {
           role: "user",
-          parts: "Summarise Google's Generative AI using a mind map with MermaidJS.",
+          parts: [
+            { text: "Keep your answers brief and to a single paragraph. Use markdown formatting extensively, Katex for formulas and MermaidJS for diagrams. Do not use other formats. Always specify the language in code fences. Eg: ```HTML. Try to use at least one or more of these special formatting options when providing your answers. Pay special attention to indentation when using MermaidJS and be very conservative using features to avoid syntax errors. Reply understood if you got everything." },
+          ],
         },
         {
           role: "model",
-          parts: `
-          \`\`\`mermaid
-          mindmap
-          {{Google Generative AI}}
-            VertexAI
-            ::icon(fa fa-cloud)
-             (Text)
-             ::icon(fa fa-file-alt)
-             (Code)
-             ::icon(fa fa-code)
-             (Audio)
-             ::icon(fa fa-volume-up)
-             (Images)
-             ::icon(fa fa-image)
-            MakerSuite
-            ::icon(fa fa-edit)
-             [Gemini for Text]
-             ::icon(fa fa-file-alt)
-             [Gemini for Chat]
-             ::icon(fa fa-comments)
-             [Embeddings] 
-             ::icon(fa fa-tasks)
-          \`\`\``,
-        }
+          parts: [
+            { text: "Understood." },
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            { text: "Difference between Constructor and ngOnInit? Answer: The constructor is called when an **Angular component** is created, while `ngOnInit` is called after the component's data has been initialized. This means that the constructor can be used to initialize the component's properties, while `ngOnInit` can be used to perform any additional initialization that needs to be done after the component's data has been loaded.\n\nFor example, the constructor might be used to set the initial value of a component's property, while `ngOnInit` might be used to subscribe to an observable or call a service.\n\nHere is an example of a constructor:\n\n```ts\nconstructor(private service: MyService) {}\n```\nAnd here is an example of `ngOnInit`:\n\n```ts\nngOnInit() {\n  this.service.getData().subscribe(data => {\n    this.data = data;\n  });\n}\n```\nIn this example, the constructor is used to inject the `MyService` dependency, while `ngOnInit` is used to subscribe to the `getData` observable and update the component's data property with the data that is returned." },
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            { text: "The constructor is called when an **Angular component** is created, while `ngOnInit` is called after the component's data has been initialized. This means that the constructor can be used to initialize the component's properties, while `ngOnInit` can be used to perform any additional initialization that needs to be done after the component's data has been loaded.\n\nFor example, the constructor might be used to set the initial value of a component's property, while `ngOnInit` might be used to subscribe to an observable or call a service.\n\nHere is an example of a constructor:\n\n```ts\nconstructor(private service: MyService) {}\n```\nAnd here is an example of `ngOnInit`:\n\n```ts\nngOnInit() {\n  this.service.getData().subscribe(data => {\n    this.data = data;\n  });\n}\n```\nIn this example, the constructor is used to inject the `MyService` dependency, while `ngOnInit` is used to subscribe to the `getData` observable and update the component's data property with the data that is returned." },
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            { text: "Summarise Google's Generative AI using a mind map with MermaidJS." },
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {
+              text: `
+    \`\`\`mermaid
+    mindmap
+      root((Google Generative AI))
+        VertexAI
+          ::icon(fa fa-cloud)
+          Text
+            ::icon(fa fa-file-alt)
+          Code
+            ::icon(fa fa-code)
+          Audio
+            ::icon(fa fa-volume-up)
+          Images
+            ::icon(fa fa-image)
+        MakerSuite
+          ::icon(fa fa-edit)
+          Gemini for Text
+            ::icon(fa fa-file-alt)
+          Gemini for Chat
+            ::icon(fa fa-comments)
+          Embeddings
+            ::icon(fa fa-tasks)
+    \`\`\`
+            ` },
+          ],
+        },
       ],
       generationConfig: {
         maxOutputTokens: 1024,
@@ -343,7 +364,7 @@ alert(s);
       id: uuid.v4(),
       text: txt,
       sender: '@gerardsans',
-      avatar: "https://pbs.twimg.com/profile_images/1688607716653105152/iL4c9mUH_400x400.jpg",
+      avatar: "https://i.imgur.com/pU0z5Xt.jpeg",
     } as any);
     this.scrollToBottom();
 
