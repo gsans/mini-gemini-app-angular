@@ -12,9 +12,10 @@ import { ClipboardButtonComponent } from '../clipboard-button/clipboard-button.c
 import { GoogleAI } from '../models.constants';
 
 @Component({
-  selector: 'app-visual',
-  templateUrl: './visual.component.html',
-  styleUrls: ['./visual.component.scss']
+    selector: 'app-visual',
+    templateUrl: './visual.component.html',
+    styleUrls: ['./visual.component.scss'],
+    standalone: false
 })
 export class VisualComponent {
   readonly clipboardButton = ClipboardButtonComponent;

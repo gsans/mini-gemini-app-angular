@@ -9,9 +9,10 @@ import { promptIdeas as PROMPTS } from './prompt-ideas'
 import QuillMarkdown from 'quilljs-markdown';
 
 @Component({
-  selector: 'app-rich-text-editor',
-  templateUrl: './rich-text-editor.component.html',
-  styleUrls: ['./rich-text-editor.component.scss']
+    selector: 'app-rich-text-editor',
+    templateUrl: './rich-text-editor.component.html',
+    styleUrls: ['./rich-text-editor.component.scss'],
+    standalone: false
 })
 export class RichTextEditorComponent {
   quillInstance!: Quill;

@@ -27,9 +27,10 @@ interface Message {
 }
 
 @Component({
-  selector: 'app-custom-chat',
-  templateUrl: './custom-chat.component.html',
-  styleUrls: ['./custom-chat.component.scss']
+    selector: 'app-custom-chat',
+    templateUrl: './custom-chat.component.html',
+    styleUrls: ['./custom-chat.component.scss'],
+    standalone: false
 })
 export class CustomChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('bottom') bottom!: ElementRef;

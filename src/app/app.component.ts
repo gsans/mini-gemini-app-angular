@@ -10,10 +10,11 @@ import { ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 import { RouterScrollService } from './router-scroll.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [hideAnimation, leftAnimation, optionAnimation]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    animations: [hideAnimation, leftAnimation, optionAnimation],
+    standalone: false
 })
 export class AppComponent implements AfterContentChecked, AfterViewInit {
   title: string = "";

@@ -9,9 +9,10 @@ import { GoogleAI } from '../models.constants';
 const MAX_PHRASES = 10;
 
 @Component({
-  selector: 'app-text',
-  templateUrl: './text.component.html',
-  styleUrls: ['./text.component.scss'],
+    selector: 'app-text',
+    templateUrl: './text.component.html',
+    styleUrls: ['./text.component.scss'],
+    standalone: false
 })
 export class TextComponent {
   @ViewChild(RichTextEditorComponent)
