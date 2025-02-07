@@ -12,7 +12,7 @@ export const promptIdeas = [
 //`Find the nouns in this sentence: "The rain in Spain falls mainly on the plain".`,
 //`Write a GraphQL pagination query and explain it to me.`,
 //`Summarise the following content into one sentence: CONTENT.`,
-//`Reply as a Venice Beach GenZ surfer with heavy usage of slang: <Is it a good idea to wrap the REST PaLM API with GraphQL? What are the benefits?>.`,
+//`Reply as a Venice Beach GenZ surfer with heavy usage of slang: <Is it a good idea to wrap the REST Gemini API with GraphQL? What are the benefits?>.`,
 //`Explain this to me as if Terminator worked in Tech Support. Use Terminator catchphrases.\nQuery:<What are GraphQL directives for?>.`,
 //`Reply with as much corporate jargon as possible. <What is GraphQL?>.`,
 /* Devs  */

@@ -5,12 +5,9 @@ import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@ang
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PredictComponent } from './predict/predict.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { PalmModule } from './generative-ai-palm/palm.module';
-import { VertexModule } from './generative-ai-vertex/vertex.module';
 import { environment } from '../environments/environment.development';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -63,7 +60,6 @@ export function markedOptionsFactory(): MarkedOptions {
 @NgModule({
   declarations: [
     AppComponent,
-    PredictComponent,
     TextComponent,
     ClipboardButtonComponent,
     ReadComponent,
@@ -77,15 +73,6 @@ export function markedOptionsFactory(): MarkedOptions {
     AppRoutingModule,
 
     BrowserAnimationsModule,
-    VertexModule.forRoot({
-       projectId: environment.PROJECT_ID,
-       accessToken: environment.GCLOUD_AUTH_PRINT_ACCESS_TOKEN,
-       version: "v1" // options: v1beta1, v1
-    }),
-    PalmModule.forRoot({
-      apiKey: environment.API_KEY,
-      version: "v1beta2" // options: v1beta2
-    }), 
     MatIconModule,
     MatListModule,
     MatSidenavModule,

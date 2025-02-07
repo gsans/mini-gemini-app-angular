@@ -1,9 +1,5 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 
-import { DISCUSS_SERVICE_CLIENT_TOKEN } from '../generative-ai-palm/palm.module';
-import { DiscussServiceClient } from '../generative-ai-palm/v1beta2/discuss.service';
-import { Message, MessageResponse } from '../generative-ai-palm/v1beta2/palm.types';
-
 import { KatexOptions, MermaidAPI } from 'ngx-markdown';
 import { ClipboardButtonComponent } from '../clipboard-button/clipboard-button.component';
 import * as uuid from 'uuid';
@@ -24,6 +20,10 @@ interface ChatMessage {
   sender: string,
   avatar: string,
   isRaw?: boolean,
+}
+
+interface Message {
+  content: string,
 }
 
 @Component({
@@ -72,9 +72,7 @@ export class CustomChatComponent implements OnInit, AfterViewChecked {
   chat: any;
 
 
-  constructor(
-    @Inject(DISCUSS_SERVICE_CLIENT_TOKEN) private client: DiscussServiceClient
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     /* this.messages.push({
@@ -465,29 +463,29 @@ alert(s);
     })
   }
 
-  buildPalmMessages(): Array<Message> {
+  buildMessages(): Array<Message> {
     const byteSize = (str: string) => new TextEncoder().encode(str).length;
     let totalBytes = 0;
-    let palmMessages: Array<Message> = [];
+    let messages: Array<Message> = [];
     
     // Keep most recent messages (reversed order)
     const reversedMessages = this.messages.slice().reverse();
     reversedMessages.forEach((message: ChatMessage) => {
       totalBytes += byteSize(message.text);
       if (totalBytes <= this.MAX_SIZE_BYTES) {
-        palmMessages.push({ content: message.text });
+        messages.push({ content: message.text });
       } else {
-        if (palmMessages.length === 0) {
+        if (messages.length === 0) {
           //  single message overflowing max length (ignore)
-          //palmMessages.push({ content: this.TrimToFit(message.text) });
+          //messages.push({ content: this.TrimToFit(message.text) });
         } else {
           //  past message that we can further trim to fit max size (automatically making room)
           //   instead of just discarding it altogether
-          palmMessages.push({ content: this.TrimToFit(message.text, Math.abs(this.MAX_SIZE_BYTES - totalBytes) ) });
+          messages.push({ content: this.TrimToFit(message.text, Math.abs(this.MAX_SIZE_BYTES - totalBytes) ) });
         }
       } 
     });
-    return palmMessages.reverse();
+    return messages.reverse();
   }
 
   TrimToFit(text: string, maxSize: number = this.MAX_SIZE_BYTES): string {
