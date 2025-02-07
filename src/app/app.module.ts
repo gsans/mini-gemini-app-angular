@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@angular/common/http'; 
+import { HttpClient, withFetch, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,56 +57,47 @@ export function markedOptionsFactory(): MarkedOptions {
   };
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    TextComponent,
-    ClipboardButtonComponent,
-    ReadComponent,
-    ProcessCodeBlocksPipe,
-    CustomChatComponent,
-    VisualComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    TextFieldModule,
-    MatProgressSpinnerModule,
-    FormsModule,
-
-    MarkdownModule.forRoot({
-      loader: HttpClient,
-      markedOptions: {
-        provide: MARKED_OPTIONS,
-        useFactory: markedOptionsFactory,
-      },
-      clipboardOptions: {
-        provide: CLIPBOARD_OPTIONS,
-        useValue: {
-          buttonComponent: ClipboardButtonComponent,
-        },
-      },
-    }),
-
-    QuillModule.forRoot(),
-    RichTextEditorModule,
-    FormsModule,
-  ],
-  providers: [
-    provideHttpClient(withFetch()),
-    AudioService,
-    RouterScrollService,
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        TextComponent,
+        ClipboardButtonComponent,
+        ReadComponent,
+        ProcessCodeBlocksPipe,
+        CustomChatComponent,
+        VisualComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatListModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        TextFieldModule,
+        MatProgressSpinnerModule,
+        FormsModule,
+        MarkdownModule.forRoot({
+            loader: HttpClient,
+            markedOptions: {
+                provide: MARKED_OPTIONS,
+                useFactory: markedOptionsFactory,
+            },
+            clipboardOptions: {
+                provide: CLIPBOARD_OPTIONS,
+                useValue: {
+                    buttonComponent: ClipboardButtonComponent,
+                },
+            },
+        }),
+        QuillModule.forRoot(),
+        RichTextEditorModule,
+        FormsModule], providers: [
+        provideHttpClient(withFetch()),
+        AudioService,
+        RouterScrollService,
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }

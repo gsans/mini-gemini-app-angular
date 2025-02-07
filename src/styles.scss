@@ -13,8 +13,8 @@ body::-webkit-scrollbar {
 
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 @import "assets/prism-base2tone-sea-light.original.css"; 
-//@import "~prismjs/themes/prism.css";
-//@import "~prismjs/themes/prism-okaidia.css";
+//@import "prismjs/themes/prism.css";
+//@import "prismjs/themes/prism-okaidia.css";
 @import "quilljs-markdown/dist/quilljs-markdown-common-style.css";
 
 code:not([class*="language-"]) {
@@ -52,8 +52,8 @@ h6 {
   font-size: 12px;
 }
 
-@import "~quill/dist/quill.core.css";
-@import "~quill/dist/quill.snow.css";
+@import "quill/dist/quill.core.css";
+@import "quill/dist/quill.snow.css";
 
 /* body,
 app-root,
@@ -69,7 +69,7 @@ app-text {
   height: 560px;
 } */
 
-/* @import "~quilljs-markdown/dist/quilljs-markdown-common-style.css"; */
+/* @import "quilljs-markdown/dist/quilljs-markdown-common-style.css"; */
 
 .mat-sidenav-container,
 .mat-sidenav-content, 
