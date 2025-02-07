@@ -12,7 +12,7 @@ body::-webkit-scrollbar {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
-@import "assets/prism-base2tone-sea-light.original.css"; 
+@import "../public/prism-base2tone-sea-light.original.css"; 
 //@import "prismjs/themes/prism.css";
 //@import "prismjs/themes/prism-okaidia.css";
 @import "quilljs-markdown/dist/quilljs-markdown-common-style.css";
@@ -75,4 +75,9 @@ app-text {
 .mat-sidenav-content, 
 .main-content {
   height: 100%;
+}
+
+.mat-mdc-nav-list .mat-mdc-list-item {
+    border-radius: 0px !important;
+    --mat-focus-indicator-border-radius: 0px !important;
 }

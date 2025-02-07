@@ -54,15 +54,15 @@ export class AppComponent implements AfterContentChecked, AfterViewInit {
     
     this.matIconRegistry.addSvgIcon( 
       `gemini`, 
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/gemini.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("gemini.svg")
     );
     this.matIconRegistry.addSvgIcon(
       `angular`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/angular.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("angular.svg")
     );
     this.matIconRegistry.addSvgIcon(
       `sparkle`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/sparkle.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("sparkle.svg")
     );
     
     this.router.events.pipe(

@@ -394,7 +394,7 @@ alert(s);
       id: uuid.v4(),
       text: text,
       sender: 'Bot',
-      avatar: "/assets/gemini.svg",
+      avatar: "/gemini.svg",
     });
     //this.scrollToBottom();
   }
@@ -404,7 +404,7 @@ alert(s);
       id: uuid.v4(),
       text,
       sender: 'Bot',
-      avatar: "/assets/gemini.svg",
+      avatar: "/gemini.svg",
     });
   }
 

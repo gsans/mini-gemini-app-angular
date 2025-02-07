@@ -40,7 +40,7 @@ export class VisualComponent {
       `,
   };
 
-  selectedImage = 'assets/baked_goods_1.jpeg'; // Default image
+  selectedImage = 'baked_goods_1.jpeg'; // Default image
   prompt = '';
   generatedRecipe = '';
 
