@@ -1,7 +1,7 @@
 # Mini-Gemini Chatbot Angular client using Gemini API (via API key and Google AI Studio)
 
 ### Features
-- Support for Google AI and VertexAI APIs
+- Support for Gemini 2.0 via Google AI API
 - Gemini API (generateContent, startChat and sendMessage)
 - Demonstration of Gemini for Text with text-to-speech (ElevenLabs)
 - Demonstration of Gemini for Chat with Rich Media support (markdown, code, emojis, formulas and diagrams)
@@ -17,7 +17,7 @@
   - ngx-markdown - Markdown renderer with support for multiple extensions (code fences and highlighting, emojis, Katex mathematic formulas, MermaidJS diagrams and more)
 - Gemini for Images:
   - ngx-markdown - Markdown renderer with support for multiple extensions (code fences and highlighting, emojis, Katex mathematic formulas, MermaidJS diagrams and more)
-
+  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
@@ -43,13 +43,11 @@ export const environment = {
 };
 ```
 
-This project includes clients to both **VertexAI** and **Gemini APIs**.
-
 ### Setup for Gemini API access via API key (Google AI Studio)
 
 Get an [API key from Google AI Studio](https://makersuite.google.com/app/apikey), then configure it here. 
 
-> Note that access is restricted to the US. Use a VPN to overcome this limitation while outside the US. 
+> Note that access [may be restricted](https://ai.google.dev/gemini-api/docs/available-regions) depending in your country. Use a VPN to overcome this limitation.
 
 ```ts
 // src/environments/environment.development.ts
@@ -57,31 +55,6 @@ export const environment = {
   API_KEY: "<<YOUR-API-KEY-FROM-GOOGLE-AI-STUDIO>>",
 };
 ```
-
-### Setup for API access via VertexAI (Google Cloud)
-This setup requires a `Google Cloud account` and is more advanced both in security and capabilities. VertexAI has access to more advanced Generative AI features (image, code, voice and more) and foundational models.
-
-To secure the API access, you need to create an account and get the credentials for your application so only you can access it. Here are the steps:
-
-- Sign up for a [Google Cloud account](https://cloud.google.com/free) and [enable billing](https://cloud.google.com/billing/docs/how-to/create-billing-account) — this gives you access to Vertex AI.
-- Create a [new project](https://developers.google.com/workspace/guides/create-project) in the Cloud Console. Make note of the project ID.
-- [Enable the Vertex AI API](https://cloud.google.com/vertex-ai) for your project.
-- [Install the gcloud CLI](https://cloud.google.com/sdk/docs/install) and run gcloud auth print-access-token. Save the printed access token - you’ll use this for authentication.
-
-Once you have the project ID and access token, you are ready to move on to the Angular app. To verify everything is setup correctly you can try these [curl commands](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/api-quickstart).
-
-```ts
-// src/environments/environment.development.ts
-export const environment = {
-  PROJECT_ID: "<<YOUR-PROJECT-ID>>",
-  GCLOUD_AUTH_PRINT_ACCESS_TOKEN: "<<YOUR-GCLOUD-AUTH-PRINT-ACCESS-TOKEN>>", 
-};
-```
-
-> Make sure that your access token remains private so you do not incur into expenses from unauthorised access.
-
-You can find more details into how to setup the VertexAI access in this [article](https://medium.com/google-cloud/getting-started-with-generative-ai-in-angular-b72737a59982)
-
 
 ### ElevenLabs Setup
 This project supports the `regular` and `streamed` APIs for faster responsiveness.
@@ -91,14 +64,7 @@ You can use the newest `eleven_multilingual_v2`, a single foundational model sup
 You need to [generate your API key](https://elevenlabs.io/speech-synthesis) (Sign In/Profile).
 
 #### Picking a voice
-Using your API key you can either use [Speech Synthesis](https://elevenlabs.io/speech-synthesis) to listen to the voices and open Developer Tools/Network to extract the voice-id from the request or use the API as shown below:
-
-```
-curl -X 'GET' \
-'https://api.elevenlabs.io/v1/voices' \
--H 'accept: application/json' \
--H 'xi-api-key: <<API-KEY>>'
-```
+Using your API key you can either use [Voice Lab](https://elevenlabs.io/app/voice-lab) to listen to the voices, once you pick one, click on "View" to access its "ID" (bottom right) or use the API `https://api.elevenlabs.io/v1/voices`.
 
 Pick a voice from the response 
 ```
