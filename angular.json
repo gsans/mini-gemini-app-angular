@@ -22,7 +22,7 @@
               "base": "dist/mini-gemini-app-angular"
             },
             "index": "src/index.html",
-            "polyfills": ["zone.js"],
+            "polyfills": ["zone.js", "mutation_events.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
