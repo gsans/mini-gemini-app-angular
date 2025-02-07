@@ -3,27 +3,29 @@
     <!-- <div class="header">{{title}}</div> -->
 
     <div class="messages" #scroll>
-      <ng-container *ngFor="let message of messages; trackBy: trackByFn">
+      @for (message of messages; track trackByFn($index, message)) {
         <div class="message-container">
-          <div class="avatar" 
+          <div class="avatar"
             [class.bot] = "message.sender == 'Bot'"
             [ngStyle]="{'background-image': 'url(' + message.avatar + ')'}">
           </div>
           <div class="message-content">
-            <span *ngIf="showReply(message.text)" class="btn-reply">
-              <button mat-icon-button (click)="navigator.clipboard.writeText(message.text)">
-                <mat-icon>content_copy</mat-icon>
-              </button>
-              <button mat-icon-button (click)="message.isRaw = !message.isRaw">
-                <mat-icon>{{!message.isRaw?'code':'visibility'}}</mat-icon>
-              </button>
-              <button mat-icon-button (click)="retry(message.text)">
-                <mat-icon>replay</mat-icon>
-              </button>
-              <button mat-icon-button (click)="delete(message.id)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </span>
+            @if (showReply(message.text)) {
+              <span class="btn-reply">
+                <button mat-icon-button (click)="navigator.clipboard.writeText(message.text)">
+                  <mat-icon>content_copy</mat-icon>
+                </button>
+                <button mat-icon-button (click)="message.isRaw = !message.isRaw">
+                  <mat-icon>{{!message.isRaw?'code':'visibility'}}</mat-icon>
+                </button>
+                <button mat-icon-button (click)="retry(message.text)">
+                  <mat-icon>replay</mat-icon>
+                </button>
+                <button mat-icon-button (click)="delete(message.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </span>
+            }
             <div class="text" [ngStyle]=" { 'display': message.isRaw ? 'block' : 'none' }">
               <pre ngPreserveWhitespaces>{{ message.text }}</pre>
             </div>
@@ -34,14 +36,16 @@
             </markdown>
           </div>
         </div>
-      </ng-container>
-      <div class="message-container" *ngIf="loading">
-        <div class="message-content loading">
-          <div class="text">
-            <mat-spinner [diameter]="20"></mat-spinner>
+      }
+      @if (loading) {
+        <div class="message-container">
+          <div class="message-content loading">
+            <div class="text">
+              <mat-spinner [diameter]="20"></mat-spinner>
+            </div>
           </div>
         </div>
-      </div>
+      }
       <div #bottom></div>
     </div>
 
@@ -56,7 +60,7 @@
             cdkAutosizeMaxRows="5"
             [(ngModel)]="model.prompt"
             (keydown.enter)="handleUserMessage($event)"
-            ></textarea>
+          ></textarea>
         </mat-form-field>
       </div>
     </div>
