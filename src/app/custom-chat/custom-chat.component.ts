@@ -192,27 +192,6 @@ alert(s);
           \`\`\`
 
           \`\`\`mermaid
-          gitGraph
-          commit
-          commit
-          branch develop
-          checkout develop
-          commit
-          commit
-          checkout main
-          merge develop
-          commit
-          commit
-          \`\`\`
-
-          \`\`\`mermaid
-          pie title Pets adopted by volunteers
-          "Dogs" : 386
-          "Cats" : 85
-          "Rats" : 15
-          \`\`\`
-
-          \`\`\`mermaid
           mindmap
           {{Google Generative AI}}
             VertexAI
